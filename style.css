@@ -1,0 +1,869 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    outline: none;
+    font-family: "Cabin", sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    min-height: 100dvh;
+    background-position: center;
+    z-index: -1;
+}
+
+main {
+    position: absolute;
+    top: 0;
+}
+
+:root {
+    --text-color: #ededed;
+    --main-second-color: #ff4800;
+    --bg: #000000;
+}
+
+section {
+    min-height: 100vh;
+    width: 100%;
+    padding: 110px 40px;
+}
+
+header {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    padding: 5px 40px;
+    z-index: 10;
+    transition: .3s;
+}
+
+header.ativo {
+    background: black;
+    transition: .3s;
+}
+
+header img {
+    width: 70px;
+    height: 70px;
+}
+
+#btn-menu {
+    background-color: transparent;
+    display: none;
+    border-radius: 5px;
+    border: none;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.linha {
+    width: 25px;
+    height: 2px;
+    background: var(--main-second-color);
+    display: block;
+    margin: 4px auto;
+    position: relative;
+    transform-origin: center;
+    transition: .3s;
+}
+
+button.ativar .linha:nth-child(1) {
+    transform: translateY(6px) rotate(-55deg);
+}
+
+button.ativar .linha:nth-child(2) {
+    width: 0;
+}
+
+button.ativar .linha:nth-child(3) {
+    transform: translateY(-6px) rotate(55deg);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--main-second-color)
+}
+
+nav a:first-child {
+    padding: 9px 15px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+nav a:hover:first-child {
+    border: 1px solid var(--main-second-color);
+}
+
+nav a.ativo {
+    transition: .3s;
+    color: var(--main-second-color);
+    transform: scale(1.1);
+}
+
+nav a.ativo:first-child {
+    border: 1px solid var(--main-second-color);
+}
+
+nav a i {
+    margin-right: 5px;
+}
+
+.login a {
+    font-size: 17px;
+    margin-left: 20px;
+    color: white;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.login a:hover {
+    color: var(--main-second-color);
+}
+
+.login a:last-child {
+    background: #161616;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.login a:hover:last-child {
+    background: #1f1f1f;
+}
+
+#inicio {
+    width: 100%;
+    min-height: 100vh;
+    background: #0000003b;
+    z-index: 10;
+}
+
+#inicio.ativo{
+    background: transparent;
+}
+
+.title {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+}
+
+.title h1 {
+    font-size: 45px;
+    color: #ffffffee;
+}
+
+.title h1 span {
+    color: var(--main-second-color);
+}
+
+.title h3 {
+    font-size: 25px;
+    color: #ffffffb9;
+}
+
+.icones {
+    width: 400px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.icones a {
+    width: 180px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.icones a img {
+    width: 200px;
+    margin-left: -10px;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.icones a img:hover {
+    transform: scale(1.1);
+}
+
+.datas {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 70px;
+}
+
+.lugar {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.lugar i {
+    position: absolute;
+    margin-left: 10px;
+    color: black;
+}
+
+.lugar input {
+    height: 50px;
+    width: 98%;
+    padding: 5px 35px;
+    border-radius: 8px;
+    border: none;
+}
+
+.lugar input::placeholder {
+    font-size: 17px;
+}
+
+.ida input {
+    height: 50px;
+    width: 98%;
+    padding: 5px 25px;
+    border-radius: 8px;
+    font-size: 17px;
+    border: none;
+}
+
+.ida,
+.lugar {
+    width: 100%;
+}
+
+.ida {
+    margin-top: -20px;
+}
+
+.ida span {
+    color: #ffffffd2;
+}
+
+.datas button {
+    width: 30%;
+    height: 50px;
+    font-size: 17px;
+    background: var(--main-second-color);
+    color: white;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.datas button:hover {
+    transform: translateY(-5px);
+    box-shadow: 5px 10px 10px #3a1000;
+    background: var(--main-second-color);
+}
+
+#services {
+    background: linear-gradient(to bottom, #0000003b, 5%,#000000e5);
+}
+
+#services.ativo{
+    background: transparent;
+}
+
+#services h1 {
+    font-size: 34px;
+    text-align: center;
+    color: white;
+}
+
+.desabilitar{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    top: 90px;
+    background: black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.desabilitar p{
+    color: var(--main-second-color);
+}
+
+.desabilitar button{
+    border-radius: 5px;
+    width: 80%;
+    padding: 10px;
+    background: var(--main-second-color);
+    color: white;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.desabilitar button:hover{
+    background: #777777;
+}
+
+.habilitar {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 90px;
+    background: black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.habilitar p {
+    color: var(--main-second-color);
+}
+
+.habilitar button {
+    width: 80%;
+    border-radius: 5px;
+    padding: 10px;
+    background: #777777;
+    color: white;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.habilitar button:hover {
+    background: var(--main-second-color);
+}
+
+.paises {
+    width: 100%;
+    height: 280px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.card {
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card img {
+    width: 200px;
+    border-radius: 10px;
+    animation: flutuando 2s infinite linear;
+}
+
+@keyframes flutuando {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.card h3 {
+    color: white;
+    margin: 10px 0;
+}
+
+.card:nth-child(2),
+.card:nth-child(4) {
+    margin-top: 100px;
+}
+
+.card button {
+    font-size: 16px;
+    opacity: .8;
+    font-weight: 200;
+    padding: 10px 20px;
+    background: transparent;
+    color: var(--main-second-color);
+    transition: all .4s ease;
+    outline: none;
+    margin: 20px;
+    border: 1.5px solid var(--main-second-color);
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transition: all .4s ease;
+    border-radius: 10px;
+}
+
+.card button::before {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 200%;
+    transform: rotate(-15deg) translateY(-20px);
+    top: 0;
+    left: 0;
+    z-index: 3;
+    background: var(--main-second-color);
+    transition: all .7s ease;
+}
+
+.card button:hover {
+    opacity: 1;
+    color: white;
+}
+
+button:hover .index {
+    position: relative;
+    z-index: 4;
+}
+
+.card button:hover::before {
+    opacity: 1;
+    width: 120%;
+}
+
+.descricao {
+    width: 100%;
+    display: flex;
+    margin-top: 200px;
+    border-top: 1px solid #ffffff1e;
+    padding: 20px 10px;
+    border-bottom: 1px solid #ffffff1e;
+    background: #000000d2;
+    border-radius: 10px;
+}
+
+.title-des {
+    width: 500px;
+}
+
+.title-des h2 {
+    font-size: 40px;
+    color: white;
+}
+
+.descricao-content {
+    width: 100%;
+    display: flex;
+}
+
+.descricao-one {
+    width: 18%;
+    margin: 0 auto;
+}
+
+.descricao-one i {
+    font-size: 25px;
+    color: #ff8d60;
+}
+
+.descricao-one h3 {
+    color: #ff8d60;
+    margin: 10px 0;
+}
+
+.descricao-one p {
+    color: white;
+}
+
+.apartamentos {
+    margin-top: 80px;
+    margin-bottom: 100px;
+}
+
+.apartamentos h2 {
+    color: white;
+}
+
+.apartamentos h3 {
+    margin-top: 10px;
+    color: #ffffff6e;
+}
+
+.apartamentos-content {
+    width: 100%;
+    height: 400px;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.apartamento-box {
+    margin: 0 auto;
+    background: #000000de;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: .3s;
+}
+
+.apartamento-box:hover {
+    transform: translateY(-15px);
+    box-shadow: 10px 20px 20px black
+}
+
+.apartamento-box img {
+    width: 250px;
+    border-radius: 10px;
+}
+
+.apartamento-box h4 {
+    color: #ffffffee;
+    margin: 5px 0;
+}
+
+.apartamento-box .rating {
+    color: #ffffffaf;
+    margin: 15px 0;
+}
+
+.apartamento-box .rating span {
+    background: #0051ff;
+    border-radius: 5px;
+    margin-right: 5px;
+    padding: 5px;
+}
+
+.apartamento-box .local {
+    color: #ffffffaf;
+    margin: 5px 0;
+}
+
+.apartamento-box .local i {
+    margin-right: 5px;
+}
+
+.apartamento-box .price {
+    text-align: end;
+    color: #ffffff6e;
+    margin-top: 10px;
+}
+
+.apartamento-box .price strong {
+    color: #ffffffea;
+}
+
+.sobre h2 {
+    font-size: 40px;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.sobre details {
+    border: 1px solid #ffffff2d;
+    padding: 30px 20px;
+    background: #000000ce;
+}
+
+.sobre details summary {
+    color: white;
+    cursor: pointer;
+}
+
+.sobre details p {
+    color: #ffffff83;
+    margin-top: 10px;
+}
+
+footer {
+    background: #010101;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer p {
+    color: #ffffffbb;
+    text-align: center;
+}
+
+footer i {
+    background: #ff4800;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+    margin-left: 10px;
+    transition: .3s;
+}
+
+@media(max-width: 1100px) {
+    .paises {
+        width: 100%;
+        height: auto;
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        overflow-x: scroll;
+    }
+
+    .card {
+        margin-right: 30px;
+    }
+
+    .apartamentos-content {
+        overflow-x: scroll;
+        height: auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .apartamento-box {
+        margin-right: 30px;
+    }
+}
+
+@media(max-width: 1000px) {
+    nav {
+        display: none;
+    }
+
+    .login {
+        display: none;
+    }
+
+    #btn-menu {
+        display: block;
+    }
+
+    .title-des {
+        width: 300px;
+    }
+
+    .datas button {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 900px) {
+    .descricao {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .title-des {
+        width: 40%;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .descricao {
+        margin-top: 100px;
+    }
+
+    .descricao-content {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .descricao-one {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        margin: 0 10px;
+    }
+}
+
+@media(max-width: 768px) {
+
+    section {
+        padding: 35px 20px 20px 20px;
+    }
+
+    #inicio {
+        background: linear-gradient(transparent 1%, #080808);
+    }
+
+    #services {
+        padding-top: 0;
+    }
+
+    .datas {
+        flex-direction: column;
+    }
+
+    .ida,
+    .lugar {
+        margin-bottom: 40px;
+    }
+
+    .title {
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .title h1 {
+        text-align: center;
+    }
+
+    .title h3 {
+        text-align: center;
+    }
+
+    .icones {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .icones a img {
+        margin-left: 0;
+    }
+
+    .title-des {
+        width: 90%;
+    }
+
+    .lugar input {
+        height: 35px;
+    }
+
+    .ida input {
+        height: 35px;
+    }
+
+    .datas {
+        margin-top: 20px;
+    }
+}
+
+@media(max-width: 700px) {
+
+    .apartamento-box img {
+        width: 200px;
+    }
+
+    .apartamento-box h4 {
+        margin: 10px 0;
+    }
+
+    .apartamento-box .rating {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+
+    .apartamento-box .local {
+        font-size: 15px;
+    }
+
+    .apartamento-box .price {
+        font-size: 15px;
+    }
+
+    footer {
+        padding: 20px 20px;
+    }
+
+    footer p {
+        font-size: 15px;
+        text-align: left;
+    }
+}
+
+@media(max-width: 510px) {
+    .card {
+        margin: 20px 10px;
+    }
+
+    .card img {
+        width: 120px;
+        border-radius: 10px;
+        animation: flutuando 2s infinite linear;
+    }
+
+    .title-des h2 {
+        font-size: 30px;
+    }
+
+    .descricao-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .descricao-one {
+        margin-bottom: 20px;
+    }
+
+    .descricao-one h3 {
+        font-size: 15px;
+    }
+
+    .descricao-one p {
+        font-size: 15px;
+    }
+
+    footer {
+        padding: 20px 20px;
+        flex-direction: column;
+    }
+
+    footer p {
+        margin-bottom: 15px;
+    }
+}
+
+@media(max-width: 400px) {
+    .title h1 {
+        font-size: 35px;
+        margin-bottom: 20px;
+    }
+
+    .title h3 {
+        font-size: 23px;
+    }
+
+    .icones a {
+        width: 140px;
+    }
+
+    .icones a img {
+        width: 140px;
+    }
+}
