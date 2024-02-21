@@ -19,7 +19,7 @@ canvas {
     left: 0;
     overflow: hidden;
     width: 100%;
-    min-height: 100dvh;
+    height: 100%;
     background-position: center;
     z-index: -1;
     background: black;
@@ -747,11 +747,11 @@ footer i {
     }
 
     #inicio{
-        background: #000000e5;
+        background: #000000dc;
     }
 
     #services {
-        background: #000000e5;
+        background: #000000dc;
         padding-top: 70px;
     }
 
