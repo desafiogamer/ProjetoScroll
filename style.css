@@ -168,6 +168,49 @@ nav a i {
     background: #1f1f1f;
 }
 
+.menuMobile{
+    width: 0;
+    display: flex;
+    position: fixed;
+    right: 0;
+    top: 80px;
+    background: black;
+    z-index: 999;
+    flex-direction: column;
+    text-align: end;
+    transition: .3s;
+}
+
+.menuMobile a{
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+    padding-right: 40px;
+    border-bottom: 1px solid #ffffff27;
+}
+
+.menuMobile a:first-child{
+    border-top: 1px solid #ffffff27;
+}
+
+.menuMobile a:last-child{
+    border: none;
+}
+
+.menuMobile a:hover{
+    color: var(--main-second-color);
+}
+
+.menuMobile a i{
+    color: var(--main-second-color);
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.menuMobile.ativo{
+    width: 100%;
+}
+
 #inicio {
     width: 100%;
     background: #0000003b;
@@ -347,6 +390,7 @@ nav a i {
     background: black;
     padding: 20px;
     border-radius: 10px;
+    animation: aparecer .3s linear;
 }
 
 .desabilitar p{
@@ -380,6 +424,7 @@ nav a i {
     background: black;
     padding: 20px;
     border-radius: 10px;
+    animation: aparecer .3s linear;
 }
 
 .habilitar p {
@@ -915,5 +960,17 @@ footer i {
 
     .icones a img {
         width: 140px;
+    }
+}
+
+@keyframes aparecer {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
     }
 }

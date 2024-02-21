@@ -26,6 +26,12 @@
 				<span class="linha"></span>
 			</button>
 		</header>
+		<div class="menuMobile">
+			<a href="#inicio" onclick="fechar()">Inicio <i class="bi bi-house-door"></i></a>
+			<a href="#services" onclick="fechar()">Serviços <i class="bi bi-hammer"></i></a>
+			<a href="#" onclick="fechar()">Entrar <i class="bi bi-box-arrow-in-right"></i></a>
+			<a href="#" onclick="fechar()">Cadastre-se <i class="bi bi-person-plus"></i></a>
+		</div>
 		<section id="inicio">
 			<div class="title">
 				<h1>Aluguéis de temporada no <span>mundo todo.</span></h1>
@@ -57,7 +63,7 @@
 			<div class="arrumarConfig">
 				<img src="./img/engrenagem.png" alt="config">
 			</div>
-			
+
 			<div class="config">
 				<div class="desabilitar ativo">
 					<p>O fundo está tirando seu foco?</p>
@@ -278,12 +284,20 @@
 	</main>
 	
 	<script type="importmap">
-			{
-				"imports": {
-					"three": "../build/three.module.js",
-					"three/addons/": "./jsm/"
-				}
+		{
+			"imports": {
+				"three": "../build/three.module.js",
+				"three/addons/": "./jsm/"
 			}
+		}
 	</script>
 	<script src="./js/script.js" type="module"></script>
+	<script>
+		const menuMobile = document.querySelector('.menuMobile')
+		const btnAnimar = document.getElementById('btn-menu');
+		function fechar() {
+			menuMobile.classList.remove('ativo')
+			btnAnimar.classList.remove('ativar')
+		}
+	</script>
 </body>

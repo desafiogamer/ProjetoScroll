@@ -1,12 +1,9 @@
 import * as THREE from '../build/three.module.js';
-import Stats from '../jsm/stats.module.js'
-import { OrbitControls } from '../jsm/OrbitControls.js';
 import { GLTFLoader } from '../jsm/GLTFLoader.js';
 import { RGBELoader } from '../jsm/RGBELoader.js'
 
 let camera,
     renderer
-
 
 const containerDesabilitar = document.querySelector('.desabilitar')
 const containerHabilitar = document.querySelector('.habilitar')
@@ -16,17 +13,9 @@ const services = document.getElementById('services')
 const inicial = document.getElementById('inicio')
 let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');
-let header = document.querySelector('header')
 const scene = new THREE.Scene()
 
 camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1000);
-
-//ambient = new THREE.AmbientLight(0x555555);
-//scene.add(ambient);
-
-//let directionalLight = new THREE.DirectionalLight(0xffeedd);
-//directionalLight.position.set(0, 0, 1);
-//scene.add(directionalLight);
 
 renderer = new THREE.WebGLRenderer();
 scene.fog = new THREE.FogExp2(0x0c0c0c, 0.002);
@@ -62,14 +51,6 @@ new RGBELoader()
             scene.environment = texture
         })
 
-/* Liner Interpolation
- * lerp(min, max, ratio)
- * eg,
- * lerp(20, 60, .5)) = 40
- * lerp(-20, 60, .5)) = 20
- * lerp(20, 60, .75)) = 50
- * lerp(-20, -10, .1)) = -.19
- */
 function lerp(x, y, a){
     return (1 - a) * x + a * y
 }
@@ -158,35 +139,32 @@ document.body.onscroll = () => {
         if(top <= offset && top <= offset + height){
             document.querySelector('header').classList.remove('ativo');
         }
-    }); //(document.getElementById('scrollProgress')).innerText =
-            //'Scroll Progress : ' + scrollPercent.toFixed(2)
+    });
 }
 
 const btnAnimar = document.getElementById('btn-menu');
+const menuMobile = document.querySelector('.menuMobile')
+
 btnAnimar.addEventListener('click', animarMenu)
 function animarMenu(){
     btnAnimar.classList.toggle('ativar')
+    menuMobile.classList.toggle('ativo')
 }
 
-const config =document.querySelector('.arrumarConfig')
+const config = document.querySelector('.arrumarConfig')
 const openConfig = document.querySelector('.config')
 
 config.addEventListener('click', ()=>{
     openConfig.classList.toggle('ativo')
 })
 
-//const stats = new Stats()
-//document.body.appendChild(stats.dom)
-
 function animate() {
-
     requestAnimationFrame(animate)
     playScrollAnimations()
     render()
 
     camera.position.y = -0.01
 
-    //stats.update()
     container.appendChild(renderer.domElement)
 }
 
