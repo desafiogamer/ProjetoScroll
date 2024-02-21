@@ -162,6 +162,19 @@ document.body.onscroll = () => {
             //'Scroll Progress : ' + scrollPercent.toFixed(2)
 }
 
+const btnAnimar = document.getElementById('btn-menu');
+btnAnimar.addEventListener('click', animarMenu)
+function animarMenu(){
+    btnAnimar.classList.toggle('ativar')
+}
+
+const config =document.querySelector('.arrumarConfig')
+const openConfig = document.querySelector('.config')
+
+config.addEventListener('click', ()=>{
+    openConfig.classList.toggle('ativo')
+})
+
 //const stats = new Stats()
 //document.body.appendChild(stats.dom)
 

@@ -177,6 +177,31 @@ nav a i {
     background: transparent;
 }
 
+.arrumarConfig{
+    position: absolute;
+    width: 50px;
+    right: -10px;
+    top: 80px;
+    border-radius: 10px;
+    background: var(--main-second-color);
+    z-index: 30;
+}
+
+.arrumarConfig img{
+    width: 40px;
+    animation: rodar 4s linear infinite;
+}
+
+@keyframes rodar{
+    0%{
+        transform: rotate(0);
+    }
+
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
 .title {
     width: 500px;
     display: flex;
@@ -297,7 +322,7 @@ nav a i {
 }
 
 #services {
-    background: linear-gradient(to bottom, #0000003b, 5%,#000000e5);
+    background: linear-gradient( #0000003b, 5%,#000000e5);
 }
 
 #services.ativo{
@@ -720,12 +745,28 @@ footer i {
         padding: 35px 20px 20px 20px;
     }
 
-    #inicio {
-        background: linear-gradient(transparent 1%, #080808);
+    #services {
+        padding-top: 70px;
     }
 
-    #services {
-        padding-top: 0;
+    .config{
+        display: none;
+    }
+
+    .config.ativo{
+        display: block;
+    }
+
+    .arrumarCoonfig{
+        display: block;
+    }
+
+    .desabilitar{
+        top: 120px; 
+    }
+
+    .habilitar{
+        top: 120px;
     }
 
     .datas {
