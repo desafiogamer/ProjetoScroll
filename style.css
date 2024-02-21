@@ -169,7 +169,7 @@ nav a i {
 
 #inicio {
     width: 100%;
-    min-height: 100vh;
+    min-height: 100dvh;
     background: #0000003b;
     z-index: 10;
 }
@@ -746,7 +746,12 @@ footer i {
         padding: 35px 20px 20px 20px;
     }
 
+    #inicio{
+        background: #000000e5;
+    }
+
     #services {
+        background: #000000e5;
         padding-top: 70px;
     }
 
